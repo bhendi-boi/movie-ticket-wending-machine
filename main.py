@@ -3,6 +3,7 @@ from ticket import Ticket
 
 if __name__ == "__main__":
     while True:
+        print("-------------------------------------------------")
         print("Timings: \nMorning  Afternoon  Evening")
         print("\n")
         print("Movies playing now: \nRRR Rocketry KGF-2")
@@ -18,5 +19,10 @@ if __name__ == "__main__":
             totalPrice = Ticket.calculatePrice(
                 noOfTickets, newTicket.preferredMovie, newTicket.prefferedTime)
             print(f"total price: {totalPrice}")
+            print("thank you for visiting us")
         else:
             print("sorry tickets are sold out :(")
+        print("\n\n------------------------------\n\n")
+        yorn = input("if you want to see total earnings press y else n")
+        if yorn.lower == "y":
+            Ticket.totalEarnings()

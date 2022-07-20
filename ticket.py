@@ -5,6 +5,7 @@ class Ticket:
     afternoonTickets = [6, 6, 6]
     eveningTickets = [6, 6, 6]
     ticketsRate = [200, 250, 200]
+    totalEarnings = 0
 
     def __init__(self, name: str, age: int, preferredTime: str, preferredMovie: str, num: int):
         assert age > 0, "age cannot be negative or zero"
@@ -66,30 +67,43 @@ class Ticket:
         if preferredTime == "morning":
             if preferrefMoive == "rrr":
                 cls.morningTickets[0] -= num
+                cls.totalEarnings += cls.ticketsRate[0] * num
                 return cls.ticketsRate[0] * num
             elif preferrefMoive == "rocketry":
                 cls.morningTickets[1] -= num
+                cls.totalEarnings += cls.ticketsRate[1] * num
                 return cls.ticketsRate[1] * num
             else:
                 cls.morningTickets[2] -= num
+                cls.totalEarnings += cls.ticketsRate[2]*num
                 return cls.ticketsRate[2]*num
         elif preferredTime == "evening":
             if preferrefMoive == "rrr":
                 cls.afternoonTickets[0] -= num
+                cls.totalEarnings += cls.ticketsRate[0] * num
                 return cls.ticketsRate[0] * num
             elif preferrefMoive == "rocketry":
                 cls.afternoonTickets[1] -= num
+                cls.totalEarnings += cls.ticketsRate[1] * num
                 return cls.ticketsRate[1] * num
             else:
                 cls.afternoonTickets[2] -= num
+                cls.totalEarnings += cls.ticketsRate[2]*num
                 return cls.ticketsRate[2]*num
         else:
             if preferrefMoive == "rrr":
                 cls.eveningTickets[0] -= num
+                cls.totalEarnings += cls.ticketsRate[0] * num
                 return cls.ticketsRate[0] * num
             elif preferrefMoive == "rocketry":
                 cls.eveningTickets[1] -= num
+                cls.totalEarnings += cls.ticketsRate[1] * num
                 return cls.ticketsRate[1] * num
             else:
                 cls.eveningTickets[2] -= num
+                cls.totalEarnings += cls.ticketsRate[2]*num
                 return cls.ticketsRate[2]*num
+
+    @classmethod
+    def printTotalEarnings(cls):
+        print(f"total eanings till now: {cls.totalEarnings}")
