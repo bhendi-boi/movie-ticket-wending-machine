@@ -1,3 +1,4 @@
+import json
 
 
 class Ticket:
@@ -6,6 +7,7 @@ class Ticket:
     eveningTickets = [6, 6, 6]
     ticketsRate = [200, 250, 200]
     totalEarnings = 0
+    ticketsHistory = []
 
     def __init__(self, name: str, age: int, preferredTime: str, preferredMovie: str, num: int):
         assert age > 0, "age cannot be negative or zero"
@@ -107,3 +109,16 @@ class Ticket:
     @classmethod
     def printTotalEarnings(cls):
         print(f"total eanings till now: {cls.totalEarnings}")
+
+    @classmethod
+    def updateDataBase(cls, name: str, time: str, movie: str, num: str):
+        pythonDetalis = {
+            "name": name,
+            "time": time,
+            "movie": movie,
+            "totalTickets": num
+        }
+        data = json.dumps(cls.ticketsHistory)
+        cls.ticketsHistory.append(pythonDetalis)
+        with open("./data.json", "w") as datajson:
+            datajson.write(data)

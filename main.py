@@ -23,6 +23,8 @@ if __name__ == "__main__":
         else:
             print("sorry tickets are sold out :(")
         print("\n\n------------------------------\n\n")
-        yorn = input("if you want to see total earnings press y else n")
+        yorn = input("if you want to see total earnings press y else n: ")
         if yorn.lower == "y":
-            Ticket.totalEarnings()
+            Ticket.printTotalEarnings()
+        Ticket.updateDataBase(newTicket.name, newTicket.prefferedTime,
+                              newTicket.preferredMovie, newTicket.noOfTickets)
